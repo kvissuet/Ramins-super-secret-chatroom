@@ -129,7 +129,7 @@ LOGIN_URL = '/users/login/'
 
 
 # Heroku settings
-if os.getcwd() == '/app':
+if True:
 	import dj_database_url
 	DATABASES = {
 		'default': dj_database_url.config(default='postgres://localhost')
@@ -143,7 +143,7 @@ if os.getcwd() == '/app':
 
 	# Static asset configuration
 	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-	STATIC_ROOT = '/static/'
+	STATIC_ROOT = 'staticfiles'
 	STATICFILES_DIRS = (
 		os.path.join(BASE_DIR, 'static'),
 	)
