@@ -66,7 +66,10 @@ def signup(request):
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
             user.profile.shift = form.cleaned_data.get('shift')
+            user.profile.prime_1=form.cleaned_data.get('prime_1')
+            user.profile.prime_2=form.cleaned_data.get('prime_2')
             user.save()
+            
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
@@ -84,6 +87,7 @@ def update_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            u=request.user
             messages.success(request, 'Your profile was successfully updated!')
             return redirect('users:update_profile')
         else:
@@ -92,9 +96,12 @@ def update_profile(request):
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         u=request.user
-        prime_mult=u.profile.prime_1*u.profile.prime_2
+        try:
+        	prime_mult=u.profile.prime_1*u.profile.prime_2
+        except:
+        	prime_mult="Pick your two favorite primes"
     return render(request, 'users/Profile.html', {
         'user_form': user_form,
         'profile_form': profile_form,
-        'mult':prime_mult
+        'mult': prime_mult,
     })

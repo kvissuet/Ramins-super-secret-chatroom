@@ -30,7 +30,6 @@ class UserKeys(models.Model):
 	RSA_private_key= models.IntegerField(null=True, help_text='Second Favorite Prime')
 	RSA_n=models.IntegerField(null=True, help_text='First Favorite Prime')
 	
-	
 	def __str__(self):
 		"""Return a string representation of the model."""
 		return self.RSA_public_key

@@ -5,10 +5,12 @@ from .models import Profile
 from django.db.models import F
 
 class SignUpForm(UserCreationForm):
-    shift=forms.CharField(max_length=2,help_text='Number between 1 and 25')
+    shift=forms.IntegerField(help_text='Number between 1 and 25')
+    prime_1=forms.IntegerField(help_text='Less than 10^10')
+    prime_2=forms.IntegerField(help_text='Less than 10^10')
     class Meta:
         model = User
-        fields = ('username',  'password1', 'password2', 'shift')
+        fields = ('username',  'password1', 'password2', 'shift', 'prime_1', 'prime_2')
         
 class UserForm(forms.ModelForm):
     class Meta:
