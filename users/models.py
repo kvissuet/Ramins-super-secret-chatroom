@@ -9,9 +9,9 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    shift=models.IntegerField(max_length=2,help_text='Number between 1 and 25')
-    prime_1=models.IntegerField(max_length=20,help_text='First Favorite Prime')
-    prime_2=models.IntegerField(max_length=20,help_text='Second Favorite Prime')
+    shift=models.IntegerField(help_text='Number between 1 and 25')
+    prime_1=models.IntegerField(help_text='First Favorite Prime')
+    prime_2=models.IntegerField(help_text='Second Favorite Prime')
 
 
 @receiver(post_save, sender=User)
