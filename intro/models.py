@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect, Http404
 
 # Create your models here.
 class Topic(models.Model):
@@ -25,3 +26,4 @@ class Entry(models.Model):
 	def __str__(self):
 		"""Return a string representation of the model."""
 		return self.text[:50] + "..."
+		

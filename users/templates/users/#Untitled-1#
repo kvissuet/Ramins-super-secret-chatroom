@@ -1,0 +1,12 @@
+{% extends "intro/base.html" %}
+{% block content %}
+
+<h2>{{ user.get_full_name }}</h2>
+<h2>Shift: {{ user.profile.shift }}</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+  <button type="submit">Save changes</button>
+</form>
+{% endblock content %}
