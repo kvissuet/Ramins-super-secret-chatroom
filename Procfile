@@ -1,1 +1,1 @@
-web: gunicorn Secrets.wsgi --log-file -
+web: gunicorn secret.wsgi --log-file -
