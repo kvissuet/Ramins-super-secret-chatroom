@@ -6,8 +6,8 @@ from django.db.models import F
 
 class SignUpForm(UserCreationForm):
     shift=forms.IntegerField(help_text='Number between 1 and 25')
-    prime_1=forms.IntegerField(help_text='Less than 10^10')
-    prime_2=forms.IntegerField(help_text='Less than 10^10')
+    prime_1=forms.IntegerField(help_text='Less than 10^5')
+    prime_2=forms.IntegerField(help_text='Less than 10^5')
     class Meta:
         model = User
         fields = ('username',  'password1', 'password2', 'shift', 'prime_1', 'prime_2')
