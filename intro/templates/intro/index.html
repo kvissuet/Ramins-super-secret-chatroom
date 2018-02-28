@@ -1,5 +1,16 @@
 {% extends "intro/base.html" %}
+
+{% block header %}
+<div class='jumbotron'>
+<h1>Welcome to Ramin's Secret Chatroom</h1>
+</div>
+{% endblock header %}
+
 {% block content %}
-<p>Open Secrets</p>
-<p>A Place to Send Messages in the Open</p>
+<h2>
+<a href="{% url 'users:signup' %}">Register an account</a> to start contributing to the message board.
+</h2>
+<h2>
+For more information about all the code clickhere: <a href=https://github.com/kvissuet/Ramins-super-secret-chatroom>Github link</a>
+</h2>
 {% endblock content %}

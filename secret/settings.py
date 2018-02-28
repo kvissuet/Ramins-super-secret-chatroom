@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # My apps
     'intro',
     'users',
+
+	# Third party apps
+	'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+# Settings for django-bootstrap3
+BOOTSTRAP3 = {
+	'include_jquery': True,
+	}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

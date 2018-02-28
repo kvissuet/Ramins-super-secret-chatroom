@@ -1,16 +1,22 @@
 {% extends "intro/base.html" %}
+
+
+{% block header %}
+<h1>Rooms</h1>
+{% endblock header %}
 {% block content %}
-<h2>Rooms</h2>
 <ul>
 	{% for topic in topics %}
 		<li>
+		<h3>
 		<a href="{% url 'intro:topic' topic.id %}">{{ topic }}</a>
+		</h3>
 		</li>
 	{% empty %}
 		<li>No topics have been added yet.</li>
 	{% endfor %}
 </ul>
 
-<a href="{% url 'intro:new_topic' %}">Add a new room:</a>
+<h3><a href="{% url 'intro:new_topic' %}">Add new chatroom</h3>
 
 {% endblock content %}

@@ -31,12 +31,3 @@ class UserKeys(models.Model):
 	RSA_private_key= models.IntegerField(null=True, help_text='Private Key')
 	RSA_n=models.IntegerField(null=True, help_text='Product of primes')
 
-@receiver(post_save, sender=User)
-def update_user_userkeys(sender, instance, created, **kwargs):
-    if created:
-        UserKeys.objects.create(user=instance)
-    instance.profile.save()
-    
-@receiver(post_save, sender=User)
-def save_user_userkeys(sender, instance, **kwargs):
-    instance.userkeys.save()
