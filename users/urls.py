@@ -17,6 +17,9 @@ urlpatterns = [
 	#New Registration page
 	url(r'^signup/$', views.signup, name='signup'),
 	
-	#Profile page
+	#Update Profile page
 	url(r'^update_profile/$', views.update_profile, name='update_profile'),
+	
+	#Profile page
+	url(r'^profile/$', views.profilepage, name='profile'),
 ]

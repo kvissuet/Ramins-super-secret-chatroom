@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
+from .RSA import RSA_encryption
 from django.contrib.auth.decorators import login_required
 
 
@@ -57,6 +58,12 @@ def new_entry(request, topic_id):
 			new_entry = form.save(commit=False)
 			new_entry.topic = topic
 			new_entry.owner = request.user
+			RSA_modulo=request.user.profile.RSA_n
+			RSA_public=request.user.profile.RSA_public_key
+			text=form.cleaned_data.get('text')
+			new_entry.RSA_modulo=RSA_modulo
+			new_entry.RSA_public=RSA_public
+			new_entry.encrypted_text=RSA_encryption(RSA_modulo,RSA_public,text)
 			new_entry.save()
 			return HttpResponseRedirect(reverse('intro:topic',
 				args=[topic_id]))

@@ -1,6 +1,14 @@
 {% extends "intro/base.html" %}
 {% block content %}
-
 <h2>{{ user.get_full_name }}</h2>
-<h2>Shift: </h2>
+<ul>
+  <li>Username: {{ user.username }}</li>
+  <li>Shift Key: {{ user.profile.shift }}</li>
+  <li>Favorite Prime: {{ user.profile.prime_1 }}</li>
+  <li>Least Favorite Prime: {{ user.profile.prime_2 }}</li>
+  <li>RSA Public Key: {{ user.profile.RSA_public_key }}</li>
+  <li>RSA Private Key: {{ user.profile.RSA_private_key }}</li>
+  <li>RSA Modulo: {{user.profile.RSA_n}}</li>
+  <a href="{% url 'users:update_profile' %}">Update Profile</a>
+</ul>
 {% endblock content %}

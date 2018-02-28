@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.db.models import F
 
 from .forms import SignUpForm, ProfileForm, UserForm
-
+from .RSA import private_and_public_key_gen
 # Create your views here.
 def logout_view(request):
 	"""Log the user out."""
@@ -58,7 +58,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth.decorators import login_required
-
+from . import RSA
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -68,7 +68,15 @@ def signup(request):
             user.profile.shift = form.cleaned_data.get('shift')
             user.profile.prime_1=form.cleaned_data.get('prime_1')
             user.profile.prime_2=form.cleaned_data.get('prime_2')
+            p1=form.cleaned_data.get('prime_1')
+            p2=form.cleaned_data.get('prime_2')
+            user.profile.RSA_n=form.cleaned_data.get('prime_2')*form.cleaned_data.get('prime_1')
+            public_key,private_key=private_and_public_key_gen(p1,p2)
+            
+            user.profile.RSA_public_key=public_key
+            user.profile.RSA_private_key=private_key
             user.save()
+
             
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
@@ -97,11 +105,21 @@ def update_profile(request):
         profile_form = ProfileForm(instance=request.user.profile)
         u=request.user
         try:
-        	prime_mult=u.profile.prime_1*u.profile.prime_2
+        	prime_mult=u.profile.RSA_n
         except:
         	prime_mult="Pick your two favorite primes"
     return render(request, 'users/Profile.html', {
         'user_form': user_form,
         'profile_form': profile_form,
         'mult': prime_mult,
+    })
+    
+def profilepage(request):
+    if True:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'users/profilepage.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        
     })

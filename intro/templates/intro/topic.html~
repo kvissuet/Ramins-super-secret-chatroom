@@ -7,9 +7,8 @@
 <ul>
 	{% for entry in entries %}
 <li>
-	<p>{{ entry.encrypted_text|linebreaks }}</p>
 	<p>{{ entry.text|linebreaks }}</p>
-	<p>{{entry.owner}} - RSA Modulo: {{entry.RSA_modulo}} - RSA Public Key: {{entry.RSA_public}} - {{ entry.date_added|date:'M d, Y H:i' }}</p>
+	<p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
 	<p>
 		<a href="{% url 'intro:edit_entry' entry.id %}">edit entry</a>
 	</p>

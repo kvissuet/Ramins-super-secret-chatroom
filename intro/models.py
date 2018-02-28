@@ -19,7 +19,10 @@ class Entry(models.Model):
 	text = models.TextField()
 	date_added = models.DateTimeField(auto_now_add=True)
 	owner = models.ForeignKey(User, on_delete=models.CASCADE)
-
+	RSA_modulo=models.IntegerField(null=True)
+	RSA_public=models.IntegerField(null=True)
+	encrypted_text=models.TextField()
+	
 	class Meta:
 		verbose_name_plural = 'entries'
 	
