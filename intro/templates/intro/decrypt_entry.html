@@ -5,10 +5,8 @@
 
 {% block content %}
 
-<p>Add a new entry:</p>
-<form action="{% url 'intro:new_entry' topic.id %}" method='post'>
+<form action="{% url 'intro:decrypt_entry' entry.id %}" method='post'>
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button name='submit'>add entry</button>
+	Decrypted Text: {{ entry.text|linebreaks }}
 </form>
 {% endblock content %}

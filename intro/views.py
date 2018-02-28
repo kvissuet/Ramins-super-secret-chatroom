@@ -90,3 +90,16 @@ def edit_entry(request, entry_id):
 				args=[topic.id]))
 	context = {'entry': entry, 'topic': topic, 'form': form}
 	return render(request, 'intro/edit_entry.html', context)
+	
+	
+def decrypt_entry(request, entry_id):
+	"""decrypt an existing entry."""
+	entry = Entry.objects.get(id=entry_id)
+	topic = entry.topic
+	# Make sure the entry belongs to the current user.
+
+	if request.method != 'POST':
+		# Initial request; pre-fill form with the current entry.
+		form = EntryForm(instance=entry)
+	context = {'entry': entry, 'topic': topic, 'form': form}
+	return render(request, 'intro/decrypt_entry.html', context)
