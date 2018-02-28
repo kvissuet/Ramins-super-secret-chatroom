@@ -1,6 +1,6 @@
 {% extends "intro/base.html" %}
 {% block content %}
-<h2>Rooms</h2>
+<p>Topics</p>
 <ul>
 	{% for topic in topics %}
 		<li>
@@ -11,6 +11,6 @@
 	{% endfor %}
 </ul>
 
-<a href="{% url 'intro:new_topic' %}">Add a new room:</a>
+<a href="{% url 'intro:new_topic' %}">Add a new topic:</a>
 
 {% endblock content %}

@@ -22,4 +22,7 @@ urlpatterns = [
 	
 	#Profile page
 	url(r'^profile/$', views.profilepage, name='profile'),
+	
+	#User page
+	url(r'^users/$', views.users, name='users'),
 ]

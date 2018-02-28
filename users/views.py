@@ -6,9 +6,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.contrib import messages
 from django.db.models import F
+from django.views.generic import View
+from django.contrib.auth.models import User
 
 from .forms import SignUpForm, ProfileForm, UserForm
 from .RSA import private_and_public_key_gen
+
 # Create your views here.
 def logout_view(request):
 	"""Log the user out."""
@@ -123,3 +126,20 @@ def profilepage(request):
         'profile_form': profile_form,
         
     })
+    
+def users(request):
+    template_name = 'users.html'
+
+    if True:
+        user_list = []
+        form_user = UserForm()
+        users = User.objects.all()
+
+        for user in users:
+            user_list.append({'id': user.id, 'name':user.username, })
+
+        return render(request, 'users/users.html', {
+            'title': 'User List',
+            'user_list': user_list,
+            'form_user': form_user
+        })

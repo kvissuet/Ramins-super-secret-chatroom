@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <table>
+        <caption>{{title}}</caption>
+        <thead><th>ID</th><th>Name</th><th>Status</th><th>Create At</th></thead>
+        <tbody>
+        {% for user in user_list%}
+        <tr><td>{{user.id}}</td><td>{{user.name}}</td><td>{{user.status}}</td><td>{{user.create_at}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <form method="POST" action="/user/">
+        <fieldset>
+            <legend>Create User</legend>
+            {% csrf_token %}
+            {{form_user}}
+            <button type="submit">Create</button>
+        </fieldset>
+    </form>
+  </body>
+</html>

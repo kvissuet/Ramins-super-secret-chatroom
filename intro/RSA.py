@@ -24,20 +24,21 @@ def private_and_public_key_gen(p1,p2):
 	return(e,d)
 	
 def e_dict():
-    alph=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890)(&^%$#@!,<.>/?;:[{}]"
-    
+    alph=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890)(&^%$#@!,<.>/?;:[{}]aaaaaaaaaaaaaaaa"
+
     int_to_str={}
     str_to_int={}
     
-    for i in alph:
-        indx=alph.index(i)+1
+    for i_ in range(len(alph)):
+        i=alph[i_]
+        indx=i_
         if len(str(indx))<2:
             s='0'+str(indx)
         else:
             s=str(indx)
         str_to_int[i]=s
         int_to_str[s]=i 
-    
+
     return(str_to_int,int_to_str)
     
 

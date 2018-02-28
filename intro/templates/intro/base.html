@@ -1,6 +1,6 @@
 <p>
 	<a href="{% url 'intro:index' %}">Front Page</a> - 
-	<a href="{% url 'intro:topics' %}">Topics</a> -
+	<a href="{% url 'intro:topics' %}">RSA Chatroom</a> -
 	{% if user.is_authenticated %}
 		Hello, {{ user.username }} - 
 		<a href="{% url 'users:profile' %}">Profile Page</a> - 
