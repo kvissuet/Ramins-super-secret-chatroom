@@ -1,4 +1,4 @@
-"""Defines URL patterns for learning_logs."""
+"""Defines URL patterns for intro."""
 from django.conf.urls import url
 from . import views
 
