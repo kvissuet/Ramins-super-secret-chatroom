@@ -1,4 +1,4 @@
-"""Defines URL patterns for learning_logs."""
+"""Defines URL patterns for intro."""
 from django.conf.urls import url
 from . import views
 
@@ -23,4 +23,7 @@ urlpatterns = [
 	url(r'^edit_entry/(?P<entry_id>\d+)/$', views.edit_entry,
 		name='edit_entry'),
 
+	# Page for decrypting an entry
+	url(r'^decrypt_entry/(?P<entry_id>\d+	)/$', views.decrypt_entry,
+		name='decrypt_entry'),
 ]

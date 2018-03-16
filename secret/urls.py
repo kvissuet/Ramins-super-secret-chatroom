@@ -21,5 +21,6 @@ from django.conf.urls import include, url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'', include('intro.urls', namespace='home')),
+    url(r'^chatroom/', include('chatroom.urls', namespace='chatroom')),
     url(r'^users/', include('users.urls', namespace='users')),
 ]                                           
